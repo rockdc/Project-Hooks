@@ -5,19 +5,15 @@ public class RotringObject : MonoBehaviour
 {
     private Vector3 Pivotpoint;// the point were it will rotrte around the object
     private float angle;
-    public float rotringSpeed = 1; // how fast the object rotrtes 
+    public float rotringSpeed = 1f; // how fast the object rotrtes 
+    private Vector3 rotringZ = new Vector3 (0, 0, -1); // sets z to -1 to rotrte ClockWise
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(Pivotpoint, Vector3.up, angle);
-        angle = Time.deltaTime * rotringSpeed;
+        transform.RotateAround(Pivotpoint, rotringZ, angle);// Takes the center point of the object and rotring on the z assces 
+        angle = Time.deltaTime * rotringSpeed;// sets angle to roate at the speed of frames in game
         
     }
 }
