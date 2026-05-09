@@ -3,20 +3,23 @@ using UnityEngine;
 
 public class ConnonManager : MonoBehaviour
 {
+
     public LineRenderer lineRenderer;
-    public float connonRange = 1f;
-    public float connonWidth = 0.3f;
-    public SpriteRenderer connonSprite;
-    Vector3 direction;
-    public GameObject connonObject;
+    public SpriteRenderer cannonSprite;
+    public GameObject cannonObject;
 
+    //Cannon Settitings
+    public float cannonRange = 1f;
+    public float cannonWidth = 0.3f;
 
+    //LineRender Settitings 
+    const int linereaderPositionCount = 2;
 
     private void Start()
     {
-       lineRenderer.positionCount = 2;
+       lineRenderer.positionCount = linereaderPositionCount;
         //set the witdth of the Connon line of sight
-        lineRenderer.startWidth = connonWidth;
+        lineRenderer.startWidth = cannonWidth;
 
         // Make sure it's visible
         lineRenderer.sortingOrder = 10;
@@ -40,18 +43,18 @@ public class ConnonManager : MonoBehaviour
         else
         {
             //Start at the connon position
-            Vector3 startPos = connonObject.transform.position;
+            Vector3 startPos = cannonObject.transform.position;
 
             //The direction based on the rotation 
-            Vector2 dir = connonObject.transform.right;
+            Vector2 dir = cannonObject.transform.right;
 
             //The raycast2D
-            RaycastHit2D hit = Physics2D.Raycast(startPos, dir, connonRange);
+            RaycastHit2D hit = Physics2D.Raycast(startPos, dir, cannonRange);
 
             //Ends positions 
             Vector3 endPos = hit.collider != null
                 ?(Vector3)hit.point
-                :startPos + (Vector3)dir * connonRange;
+                :startPos + (Vector3)dir * cannonRange;
           
             
             //Draw the line 
@@ -62,9 +65,10 @@ public class ConnonManager : MonoBehaviour
         }
     }
 
-    void OnConnonShoot()
+    //When the player shoots the cannon
+    void OnCannonShoot()
     {
-      lineRenderer.enabled = !lineRenderer.enabled;
+        //lineRenderer.enabled = !lineRenderer.enabled; // truns line off and on when shooting make a debug button later
         Debug.Log("Connon is Shoot");
     }
 }
