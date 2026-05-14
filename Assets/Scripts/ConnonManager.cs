@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class ConnonManager : MonoBehaviour
 {
-    //Cannon Settitings
+    [Header("Cannon Settitings")]
     public float cannonRange = 10f;
     public float cannonWidth = 0.3f;
+    public bool CanShoot = true;
+
     //What the cannon can Shoot
     public LayerMask hitMask;
+
 
     //LineRender Settitings 
     int linereaderPositionCount = 2;
@@ -21,7 +24,8 @@ public class ConnonManager : MonoBehaviour
         lineRenderer.positionCount = linereaderPositionCount;
         //set the witdth of the Connon line of sight
         lineRenderer.startWidth = cannonWidth;
-        
+        //Reset the cannon to false at the start of the game
+        CanShoot = false;
         // Makes sure it's visible and on top
         lineRenderer.sortingOrder = 10;
     }
@@ -66,9 +70,9 @@ public class ConnonManager : MonoBehaviour
     }
 
     //When the player shoots the cannon
-    void OnCannonShoot()
+    public void OnCannonShoot()
     {
-        lineRenderer.enabled = !lineRenderer.enabled; // truns line off and on when shooting make a debug button later
+        CanShoot = true;
         Debug.Log("Connon is Shoot");
     }
 }
