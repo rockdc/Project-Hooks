@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f92c98ce06c464d99f3a7df5526fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnonManager
-  cannonRange: 10
+  cannonRange: 3
   cannonWidth: 0.1
   CanShoot: 1
   hitMask:
