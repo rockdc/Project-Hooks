@@ -51,7 +51,7 @@ public class ConnonManager : MonoBehaviour
             Vector3 startPos = cannonObject.transform.position;
 
             //The direction based on the rotation 
-            Vector3 dir = cannonObject.transform.up;
+            Vector3 dir = cannonObject.transform.localEulerAngles;
 
             //The raycast2D
             RaycastHit2D hit = Physics2D.Raycast(startPos, dir, cannonRange, hitMask);
