@@ -36,9 +36,9 @@ public class PersonProjectileManager : MonoBehaviour
                 Debug.Log("spawning miner");
 
                 // Give miner a direction
-                MinerRigidbody2d = spawnedMiner.GetComponent<Rigidbody2D>();
-                Vector3 fireDirection = GameManager.instance.ConnonManager.cannonObject.transform.position;
-                MinerRigidbody2d.linearVelocity = fireDirection * minerMoveSpeed;
+                MinerRigidbody2d = spawnedMiner.GetComponent<Rigidbody2D>(); // Geting the rigbody of the miner that it is shooting 
+                Vector3 fireDirection = cannonObject.transform.position; // Spawn a miner at the barrle of the Cannon
+                MinerRigidbody2d.linearVelocity = fireDirection * minerMoveSpeed; //pusheds the miner with a linearVelocity at a force of the direction and speed the miner gose 
             }
             else
             {
